@@ -26,3 +26,10 @@
     # States with Zero inmates
       prisoners_data.loc[(prisoners_data.Elementary_Education == 0) & (prisoners_data.Adult_Education == 0) 
                    & (prisoners_data.Higher_Education == 0) & (prisoners_data.Computer_Course == 0)]
+
+# 2. Data Manipulation
+  # a. Create a new column -’total_benefitted’ that is a sum of inmates benefitted through all modes.
+    prisoners_data['Total_Benefited'] = prisoners_data.iloc[:,2:].sum(axis=1)
+    
+  # b. Create a new row -“totals” that is the sum of all inmates benefitted through each mode across all states.  
+    prisoners_data.loc['Totals'] = prisoners_data.iloc[:,2:].sum(axis=0)
